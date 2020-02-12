@@ -516,7 +516,7 @@ class HierarchicalClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin)
                     "_train_local_classifier() - training node %s ",  # noqa:E501
                     node_id,
                 )
-                self.graph_.node[node_id][CLASSIFIER] = clf
+                self.graph_.nodes[node_id][CLASSIFIER] = clf
             else:                
                 self.logger.debug(
                     "_train_local_classifier() - could not train  node %s ",  # noqa:E501
@@ -526,7 +526,7 @@ class HierarchicalClassifier(BaseEstimator, ClassifierMixin, MetaEstimatorMixin)
         else:
             clf.fit(X=X_, y=y_)
             
-            self.graph_.node[node_id][CLASSIFIER] = clf
+            self.graph_.nodes[node_id][CLASSIFIER] = clf
 
     def _recursive_predict(self, x, root):
         if CLASSIFIER not in self.graph_.nodes[root]:
